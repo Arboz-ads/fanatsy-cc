@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>فانتازي كأس العاصمة</title>
+  <style>
+    body {
+      background-color: #000;
+      color: #ccff00;
+      font-family: 'Cairo', sans-serif;
+      padding: 20px;
+      direction: rtl;
+    }
+    h2 {
+      text-align: center;
+      font-size: 2em;
+      margin-bottom: 20px;
+      color: #ccff00;
+    }
+    .form-section, .subs, .captain-section {
+      max-width: 900px;
+      margin: auto;
+      background-color: #111;
+      padding: 15px;
+      border-radius: 10px;
+      box-shadow: 0 0 15px #ccff00aa;
+      margin-top: 30px;
+    }
+    label {
+      font-weight: bold;
+    }
+    select, input[type="text"] {
+      width: 100%;
+      padding: 6px;
+      margin-top: 5px;
+      border-radius: 5px;
+      border: none;
+      background: #222;
+      color: #ccff00;
+    }
+    .field {
+      background: url('https://i.imgur.com/ogG93pU.png') center/cover no-repeat;
+      width: 100%;
+      max-width: 900px;
+      height: 500px;
+      margin: auto;
+      border: 5px solid #ccff00;
+      border-radius: 15px;
+      position: relative;
+      box-shadow: 0 0 20px #ccff00aa;
+    }
+    .player-slot {
+      position: absolute;
+      width: 120px;
+      text-align: center;
+    }
+    .player-slot img {
+      width: 60px;
+      display: block;
+      margin: auto;
+    }
+    .player-slot select {
+      width: 100%;
+      margin-top: 5px;
+    }
+    .p1 { top: 20px; left: 40%; }
+    .p2 { top: 120px; left: 20%; }
+    .p3 { top: 120px; left: 60%; }
+    .p4 { top: 220px; left: 10%; }
+    .p5 { top: 220px; left: 70%; }
+    .p6 { top: 320px; left: 40%; }
+
+    .subs {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+    .subs .player-slot {
+      position: static;
+      width: 48%;
+      margin-bottom: 10px;
+    }
+    .subs .player-slot img {
+      width: 50px;
+      display: block;
+      margin: auto;
+    }
+    button {
+      width: 100%;
+      padding: 10px;
+      background-color: #ccff00;
+      color: #000;
+      font-size: 1.1em;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: 0.3s;
+      margin-top: 20px;
+    }
+    button:hover {
+      background-color: #bfff00;
+    }
+    #popup {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.8);
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+    #popup div {
+      background: #111;
+      padding: 30px;
+      color: #ccff00;
+      font-size: 1.2em;
+      border-radius: 10px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <h2>⚽ فانتازي كأس العاصمة</h2>
+
+  <form id="fantasyForm">
+    <div class="form-section">
+      <label>اسمك:</label>
+      <input type="text" name="username" required>
+
+      <label>اختار فريقك من القائمة:</label>
+      <select name="team" id="teamList" required>
+        <option value="">جارٍ تحميل الفرق...</option>
+      </select>
+    </div>
+
+    <div class="field">
+      <div class="player-slot p1">
+        <img src="https://i.imgur.com/YOUR_SHIRT_IMAGE.png" alt="shirt">
+        <select name="main1" required><option>لاعب 1</option></select>
+      </div>
+      <div class="player-slot p2">
+        <img src="https://i.imgur.com/YOUR_SHIRT_IMAGE.png" alt="shirt">
+        <select name="main2" required><option>لاعب 2</option></select>
+      </div>
+      <div class="player-slot p3">
+        <img src="https://i.imgur.com/YOUR_SHIRT_IMAGE.png" alt="shirt">
+        <select name="main3" required><option>لاعب 3</option></select>
+      </div>
+      <div class="player-slot p4">
+        <img src="https://i.imgur.com/YOUR_SHIRT_IMAGE.png" alt="shirt">
+        <select name="main4" required><option>لاعب 4</option></select>
+      </div>
+      <div class="player-slot p5">
+        <img src="https://i.imgur.com/YOUR_SHIRT_IMAGE.png" alt="shirt">
+        <select name="main5" required><option>لاعب 5</option></select>
+      </div>
+      <div class="player-slot p6">
+        <img src="https://i.imgur.com/YOUR_SHIRT_IMAGE.png" alt="shirt">
+        <select name="main6" required><option>لاعب 6</option></select>
+      </div>
+    </div>
+
+    <div class="subs">
+      <div class="player-slot">
+        <img src="https://i.imgur.com/YOUR_SHIRT_IMAGE.png" alt="shirt">
+        <select name="sub1" required><option>لاعب 7</option></select>
+      </div>
+      <div class="player-slot">
+        <img src="https://i.imgur.com/YOUR_SHIRT_IMAGE.png" alt="shirt">
+        <select name="sub2" required><option>لاعب 8</option></select>
+      </div>
+      <div class="player-slot">
+        <img src="https://i.imgur.com/YOUR_SHIRT_IMAGE.png" alt="shirt">
+        <select name="sub3" required><option>لاعب 9</option></select>
+      </div>
+      <div class="player-slot">
+        <img src="https://i.imgur.com/YOUR_SHIRT_IMAGE.png" alt="shirt">
+        <select name="sub4" required><option>لاعب 10</option></select>
+      </div>
+    </div>
+
+    <div class="form-section captain-section">
+      <label>الكابتن:</label>
+      <input type="text" name="captain" required>
+      <button type="submit">🚀 إرسال التشكيلة</button>
+    </div>
+  </form>
+
+  <div id="popup"><div>✅ تم إرسال تشكيلتك بنجاح!<br>بالتوفيق في كأس العاصمة 🏆</div></div>
+
+  <script>
+    async function loadTeams() {
+      const response = await fetch('YOUR_GOOGLE_SCRIPT_WEBAPP_URL');
+      const teams = await response.json();
+      const teamSelect = document.getElementById("teamList");
+      teamSelect.innerHTML = '<option value="">اختر الفريق...</option>';
+      teams.forEach(t => {
+        const opt = document.createElement("option");
+        opt.value = t;
+        opt.textContent = t;
+        teamSelect.appendChild(opt);
+      });
+    }
+    loadTeams();
+
+    const form = document.getElementById('fantasyForm');
+    const popup = document.getElementById('popup');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const formData = new FormData(form);
+      const data = {};
+      formData.forEach((value, key) => data[key] = value);
+
+      await fetch("YOUR_SCRIPT_URL_HERE", {
+        method: "POST",
+        mode: "no-cors",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data)
+      });
+
+      popup.style.display = 'flex';
+      setTimeout(() => {
+        popup.style.display = 'none';
+        form.reset();
+      }, 3000);
+    });
+  </script>
+</body>
+</html>
